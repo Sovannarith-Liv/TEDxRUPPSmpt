@@ -42,11 +42,6 @@ class EmailThread(Thread):
 
         print("Email was send successfully")
 
-
-image = open("./static/testing_pics/Logo.png", "rb")
-#csv = open("./static/aud.csv", "rb")
-EmailThread("jianxingliao168@gmail.com",csv, image).start()
-
 #read the csv file row by row 
 """with open('./static/aud.csv', 'r') as file:
     reader = csv.reader(file)
