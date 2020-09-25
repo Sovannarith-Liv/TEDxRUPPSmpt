@@ -1,4 +1,11 @@
-from send_mail import EmailThread
+from tedxemail import send_email
+from threading import Thread
+import pandas as pd
 
-image = open("./static/testing_pics/Logo.png", "rb")
-EmailThread("jianxingliao168@gmail.com",csv, image).start()
+df = pd.read_csv("./static/audience.csv")
+emails = df["email"].values
+images = ["./static/qrcode/" + name + ".jpg" for name in df["name"].values]
+
+for i in range(len(emails)):
+    thread = Thread(target=send_email, args=[images[i], emails[i]])
+    thread.start()
